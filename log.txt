@@ -1,0 +1,18 @@
+URL: /
+Timestamp: Fri Jan 22 2021 16:39:21 GMT-0700 (Mountain Standard Time)
+
+URL: /favicon.ico
+Timestamp: Fri Jan 22 2021 16:39:21 GMT-0700 (Mountain Standard Time)
+
+URL: /
+Timestamp: Fri Jan 22 2021 16:41:22 GMT-0700 (Mountain Standard Time)
+
+URL: /favicon.ico
+Timestamp: Fri Jan 22 2021 16:41:22 GMT-0700 (Mountain Standard Time)
+
+URL: /documentation
+Timestamp: Fri Jan 22 2021 16:42:02 GMT-0700 (Mountain Standard Time)
+
+URL: /favicon.ico
+Timestamp: Fri Jan 22 2021 16:42:02 GMT-0700 (Mountain Standard Time)
+
