@@ -1,25 +1,40 @@
-const express = require('express'),
-    morgan = require('morgan');
+/*jshint esversion: 6*/
 
+const express = require("express"),
+    morgan = require("morgan");
 const app = express();
 
-app.use(morgan('common'));
-const bodyParser = require('body-parser'),
-    methodOverride = require('method-override');
+//express.static
+//"documentation.html" file from public folder
+app.use(express.static("public"));
+//Morgan middleware function to log all requests
+app.use(morgan("common"));
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.use(bodyParser.json());
-app.use(methodOverride());
-
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
-});
-
-
+let users = [{
+        id: 1,
+        Username: "Martin Lam",
+        Password: "1234",
+        Email: "h.monet1104@gmail.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+    {
+        id: 2,
+        Username: "Tim Wong",
+        Password: "5678",
+        Email: "h.monet1104@yahoo.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+    {
+        id: 3,
+        Username: "Winnie Lam",
+        Password: "5555",
+        Email: "seank@gmail.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+];
 let movies = [{
         id: 1,
         Title: "Silence of the Lambs",
@@ -94,25 +109,86 @@ let movies = [{
     },
 ];
 
-// GET requests
-app.get('/', (req, res) => {
-    res.send('Welcome to my app!');
+//GET requests
+app.get("/", function(req, res) {
+    res.send("Welcome to Flix Fix!");
 });
-
-app.get('/secreturl', (req, res) => {
-    res.send('This is a secret url with super top-secret content.');
-});
-
-app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname });
-});
-
-app.get('/movies', (req, res) => {
+app.get("/movies", function(req, res) {
     res.json(movies);
 });
+app.get("/movies/:Title", (req, res) => {
+    res.json(
+        movies.find((movie) => {
+            return movie.Title === req.params.Title;
+        })
+    );
+});
+app.get("/movies/director/:Name", (req, res) => {
+    res.json(
+        movies.find((movie) => {
+            return movie.Director.Name === req.params.Name;
+        })
+    );
+});
 
+app.get("/movies/genres/:Name", (req, res) => {
+    res.json(
+        movies.find((movie) => {
+            return movie.Genre.Name === req.params.Name;
+        })
+    );
+});
+//User endpoints
+app.get("/users", function(req, res) {
+    res.json(users);
+});
+//adds user
+app.post("/users", (req, res) => {
+    res.status(500).send("User added!");
+});
 
-// listen for requests
-app.listen(8080, () => {
-    console.log('Your app is listening on port 8080.');
+//updates user information
+app.put("/users/:Username", (req, res) => {
+    res.json(
+        users.find((user) => {
+            return user.Username === req.params.Username;
+        })
+    );
+});
+
+app.get("/users/:Username", (req, res) => {
+    res.json(
+        users.find((user) => {
+            return user.Username === req.params.Username;
+        })
+    );
+});
+
+//allows user to add movie to favorites
+app.post("/users/:Username/favorites", (req, res) => {
+    res.status(500).send("Succesfully added movie to favorites!");
+});
+
+//allows user to remove movie from favorites
+app.delete("/users/:Username/favorites", (req, res) => {
+    res.status(500).send("Successfully removed movie from favorites.");
+});
+
+//allows user to deregister
+app.delete("/users/:Email", (req, res) => {
+    res.status(500).send("User Deleted.");
+});
+
+app.get("/documentation", (req, res) => {
+    res.sendFile("public/documentation.html", { root: __dirname });
+});
+
+//error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Something broke!");
+});
+
+app.listen(3000, () => {
+    console.log("Your app is listening on port 3000.");
 });
