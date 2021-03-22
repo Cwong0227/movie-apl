@@ -1,0 +1,58 @@
+[{
+  "_id": {
+    "$oid": "604972bc11a7bf8fabaae41e"
+  },
+  "Username": "Ching",
+  "Password": "1234",
+  "Email": "Cwong011@gmail.com",
+  "Birthday": {
+    "$date": "1985-02-19T00:00:00Z"
+  },
+  "FavoriteMovies": [
+    {
+      "$oid": "60496fa611a7bf8fabaae41d"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6056f0a811a7bf8fabaae420"
+  },
+  "Username": "Peter",
+  "Password": "5678",
+  "Email": "PeterLee@gmail.com",
+  "Birthday": {
+    "$date": "1995-01-19T00:00:00Z"
+  },
+  "FavoriteMovies": [
+    {
+      "$oid": "6056eced11a7bf8fabaae41f"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6056f71811a7bf8fabaae422"
+  },
+  "Username": "Tim",
+  "Password": "91012",
+  "Email": "Tim1214@gmail.com",
+  "Birthday": {
+    "$date": {
+      "$numberLong": "-172108800000"
+    }
+  },
+  "FavoriteMovies": [
+    {
+      "$oid": "6056f64e11a7bf8fabaae421"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6056f80911a7bf8fabaae424"
+  },
+  "Username": "Connie",
+  "Password": "012790",
+  "Email": "ConnieQ@gmail.com",
+  "Birthday": {
+    "$date": "1993-02-14T00:00:00Z"
+  }
+}]
